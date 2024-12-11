@@ -1,0 +1,15 @@
+django
+whitenoise
+requests
+beautifulsoup4
+html-parser
+wget
+django-user-agents
+gunicorn
+pycountry
+django-redis
+redis 
+celery
+django-crontab
+schedule
+oauth2client

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}  {% block title %}
+{% if total_length %}
+  ({{total_length}})
+{%endif%}
+
+{% if title %}  {{title}}
+
+{% else %}
+Jobs - Recruitment - Job Search -  Employment - Job Vacancies - Jobs 
+{% endif %} 
+
+{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="/public/job/css.css" />
+{% endblock style %}
+
+{% block body %}
+
+<main class="main-job">
+  <form class="job-search-form" method="GET" action="">
+    <h1>Find the job that fits your dream</h1>
+    <div class="search-box">
+      <input
+        type="text"
+        name="q"
+        placeholder="{% if is_organization %}Search in {{is_organization}} {% else %} Search by job title or location {%endif%}" 
+        value="{% if search_query %}{{search_query}}{% endif %}"
+        required
+      />
+    </div>
+  {% if is_filter_query %}
+    <p class="is-filter-query">{{is_filter_query}} </p>
+    {% endif %}
+
+  </form>
+</main>
+
+<div class="job-results">
+    {% for job in jobs %}
+  <div class="job custom-border">
+    <div class="job-organizations">
+      <a href="/organization/{{job.organization_name}}/"
+        ><img
+          src="{{job.organization_logo}}"
+          class="orglogo"
+          width="120"
+          height="60"
+          alt="{{job.organization_name}}"
+          aria-label="{{job.organization_name}}"
+          onerror="this.onerror=null;this.src='https://talenttrackers.online/public/placeholder.png';"
+      /></a>
+    </div>
+    <div class="container">
+      <div class="">
+        <a class="job-title" href="{{job.get_absolute_url}}"
+          >{{job.title}}</a
+        >
+      </div>
+      <div class="mt">
+        <a  class="link-dark" href="/organization/{{job.organization_name}}/" aria-label="{{job.organization_name}}" >{{job.organization_name}} </a>
+      </div>
+      <div class="mt">
+        <span class="bi bi-flag"></span>
+        <a class="job-location" href="/job?location={{job.address_complete_address}}">{{job.address_complete_address}} </a> <span
+        ><i class="text-secondary"></i>
+      </div>
+      <div class="mt">
+        <span
+          ><i class="bi bi-clock"> </i>
+          <small class="text-muted">Posted {{job.time_since_posted}}</small></span
+        >
+        <!---->
+      </div>
+    </div>
+  </div>
+
+
+  {% endfor %}
+
+
+  <!--  -->
+  {% if page_obj.has_next %}
+
+  <div class="paginator-container">
+      <a class="load-more-btn" href="{{next_query}}" role="button">Next Page </a>
+  </div>
+  {% endif %}
+  <!--  -->
+
+</div>
+
+
+{% endblock body %}
+
+{% block script %}
+<script>
+  try{
+  const query = document.querySelector(".is-filter-query")
+  query.addEventListener("click",()=>{
+    window.location.href = "/job/"
+  })}catch{}
+</script>
+
+{% endblock script %}

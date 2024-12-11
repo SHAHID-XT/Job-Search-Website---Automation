@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0, user-scalable=no"/>
+    <link rel="icon" type="image/x-icon" href="/public/static/favicon.svg">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    {% if copyright %}
+    <meta name="copyright" content="{{copyright}}" />
+    {% endif %}
+    {% if keywords %}
+    <meta name='keywords' content='{{keywords | safe}}'>
+    {% endif %}
+    {% if  description %}
+    <meta name='description' content='{{description | safe}}'>
+    {% endif %}
+    <meta name="content-language" content="EN" />
+    {% if author %}
+    <meta name="author" content="{{author}}" />
+    {% endif %}
+    {% if ogsite_name%}
+    <meta property="og:site_name" content="{{ogsite_name}}" />
+    {% endif %}
+    {% if ogtitle%}
+    <meta
+    property="og:title"
+    content="{{ogtitle}}"
+  />
+  {% endif %}
+  {% if ogdescription %}
+  <meta
+  property="og:description"
+  content="{{ogdescription}}"
+/>
+    {% endif %}
+    <meta name="distribution" content="GLOBAL" />
+    <meta name="rating" content="general" />
+    <meta
+    name="classification"
+    content="Jobs &amp; Career: Job posting, Job Search, Apply Jobs, Post Jobs"
+  />
+    <meta name="robots" content="ALL" />
+    <meta property="og:type" content="website" />
+    <meta name="resource-type" content="document" />
+    <meta name="galaksion-domain-verification" content="b28d22c57e3f78727b309e92d240fafc5f6c8100807a08c4673e1cfb339b8201" />
+    <meta name="monetag" content="c4ff2e44154fbb98407bf2b4f0d3866a">
+    <link rel="stylesheet" href="{% static 'base.css' %}" />
+    <link
+      rel="stylesheet"
+      href="/public/css.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/public/static/css2.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title> {% block title %} {% endblock title %} | {{website_name}} </title>
+
+    {% block style %} {% endblock style %}
+
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1BBLYXG1D1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1BBLYXG1D1');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4661800828936703"
+     crossorigin="anonymous"></script>
+  </head>
+  <body>
+    {% include 'nav.html' %}
+        <div class="container"> 
+          {% block body %} {% endblock body %}
+          
+          {% include 'footer.html' %}
+        </div>
+
+  
+  </body>
+  <script src="{% static 'base.js' %}">
+  </script>
+   {% block script %} {% endblock script %}
+    <script>
+    function insertScriptAfterDelay() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = '//thubanoa.com/1?z=7726869';
+      document.body.appendChild(script);
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(insertScriptAfterDelay, 55000);
+    });
+  </script> 
+
+  <script>
+    // Function to load the script after 5 seconds
+    function loadScript() {
+        var d = 'glizauvo.net';
+        var z = 7726915;
+        var s = document.createElement('script');
+        s.src = 'https://' + d + '/401/' + z;
+        try {
+            (document.body || document.documentElement).appendChild(s);
+        } catch (e) {
+            console.error('Failed to append script:', e);
+        }
+    }
+
+    // Wait for 5 seconds after page load
+    setTimeout(loadScript, 25000);
+</script>
+
+</html>
+
+

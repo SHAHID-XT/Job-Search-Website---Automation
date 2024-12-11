@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block title %} International Jobs, Take control of your career {% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="/public/auth/css.css" />
+
+{% endblock style %} {% block body %}
+
+<div class="auth-container">
+    <div class="auth-info-container">
+        <h3>Take control of your career.</h3>
+        <p>Personalize your search, and get recommended jobs based on your preferences.</p>
+        <p>Manage your job searches, save and track your progress, and prepare your applications.</p>
+        <p>Follow your favorite organizations. Receive your personalized weekly job alerts.</p>
+    </div>
+    <div class="auth-form-container">
+        <div class="header-info">By continuing, signing in, or creating account, you agree to our <a href="/privacy/">Privacy Policy</a>.</div>
+        <h3>Create a new account</h3>
+        <form action="/register/" method="POST">
+            {%csrf_token %}
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Password" required />
+            <input type="password" name="password2" placeholder="Confirm Password" required />
+
+            {% comment %} <a href="/forgot-password/">Forgot password?</a> {% endcomment %}
+            <input type="submit" value="Sign in" />
+            <p>Already have Account?<a href="/login"> login</a></p>
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock body %}

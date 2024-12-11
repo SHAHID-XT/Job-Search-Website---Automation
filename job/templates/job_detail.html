@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+ {% block title %} 
+ {% comment %} {{job.title}} at {{job.organization.name}} in {{job.address.get}}  {% endcomment %}
+ {{title}}
+ {% endblock title %}
+
+{% block style %}
+
+{% block head %}
+{% if job.is_expired %}
+        <meta name="robots" content="noindex, nofollow">
+    {% endif %}
+{% endblock head %}
+<link rel="stylesheet" href="/public/job/css.css" />
+ 
+<script type="application/ld+json">
+  {{job.get_schema| safe}}
+</script>
+
+<style>
+  .expired-job{
+    color: red;
+    font-weight: bold;
+  }
+  .h2-span-smaller{
+    font-size: 1rem;
+  }
+</style>
+{% endblock style %} 
+ 
+
+{% block body %}
+<div class="job-results job-detail">
+  <div class="jresult">
+    <div class="job-organizations">
+      <a href="/organization/{{job.organization_name}}/"
+        ><img
+          src="{{job.organization_logo}}"
+          class="orglogo"
+          width="120"
+          height="60"
+          alt="{{job.organization_name}}"
+          aria-label="{{job.organization_name}}"
+          onerror="this.onerror=null;this.src='https://talenttrackers.online/public/placeholder.png';"
+      /></a>
+    </div>
+    <div class="container job-detailll">
+      <div class="">
+        <a class="job-title" type="button"
+          >{{job.title}}</a
+        >
+      </div>
+      <div class="mt">
+        <span class=""></span>
+        <a class="link-dark" type="button">{{job.organization_name}} </a>
+      </div>
+      <div class="mt">
+        <span class="bi bi-flag"></span>
+        <a class="job-location" href="/job?location={{job.address_complete_address}}">{{job.address_complete_address}} </a> <span
+        ><i class="text-secondary"></i>
+      </div>
+    </div>
+    <div class="apply-section">
+      <a href="/apply/{{job.job_id}}" rel="nofollow" target="_blank" class="applybtn">Apply Now</a>
+      <div class="text-secondary " > <span
+        ><i class="bi bi-clock"> </i>
+        <small class="text-muted">Posted {{job.time_since_posted}}</small></span
+      ></div>
+    </div>
+    
+  </div> 
+
+    <div class="job-description-section">
+
+      <div class="section"> 
+        <h2 class="{% if job.is_expired %} expired-job {% endif %}"> {% if job.is_expired %} This position is no longer accepting applications. <br> Explore other opportunities on our site.  {% else %}Job Description
+        {% endif %}
+      </h2>
+      <p style="margin:0; padding:0;"><strong>Expires:</strong> {{ job.validThrough|date:"d-m-Y" }}</p>
+        <div class="data-job-id" >{{job.description | safe}}</div>
+        <div class="apply-section">
+          <a href="/apply/{{job.job_id}}" rel="nofollow" target="_blank" class="applybtn small">Apply Now</a>
+          </div>
+      </div>
+      <div class="section suggestion">
+        <h2>Similar Jobs
+        </h2>
+        
+        <div class="job-results">
+          {% for job in jobs %}
+        <div class="job">
+          <div class="job-organizations">
+            <a href="/organization/{{job.organization_name}}/"
+              ><img
+                src="{{job.organization_logo}}"
+                class="orglogo"
+                width="120"
+                height="60"
+                alt="{{job.organization_name}}"
+                aria-label="{{job.organization_name}} "
+                onerror="this.onerror=null;this.src='https://talenttrackers.online/public/placeholder.png';"
+            /></a>
+          </div>
+          <div class="container">
+            <div class="">
+              <a class="job-title" href="{{job.get_absolute_url}}"
+                >{{job.title}}</a
+              >
+            </div>
+            <div class="mt">
+              <a class="link-dark" href="/organization/{{job.organization_name}}/">{{job.organization_name}} </a>
+            </div>
+            <div class="mt">
+              <span class="bi bi-flag"></span>
+              <a class="job-location" href="/job?location={{job.address_complete_address}}">{{job.address_complete_address}}</a> <span
+              ><i class="text-secondary"></i>
+            </div>
+            <div class="mt">
+              <span
+                ><i class="bi bi-clock"> </i>
+                <small class="text-muted">Posted {{job.time_since_posted}}</small></span
+              >
+              <!---->
+            </div>
+          </div>
+        </div>
+      
+        {% endfor %}
+      </div>
+      <div class="job-results">
+        <div id="container-9cd4bb3f60f9bc3f4f4c3e8e5a2555d1"></div>
+      </div>
+      </div>
+    </div>
+</div>
+{% endblock body %} 
+
+{% block script %}
+<script async="async" data-cfasync="false" src="//pl23736666.highrevenuenetwork.com/9cd4bb3f60f9bc3f4f4c3e8e5a2555d1/invoke.js"></script>
+
+{% endblock script %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %} Careers at United Nations, Development Banks and International Organizations {% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="/public/org/css.css" />
+
+{% endblock style %} {% block body %}
+ 
+<div class="org-container">
+    <div class="org-title">
+        <h2>{{organizations | length}} Organizations are hiring now
+        </h2>
+    </div>
+
+    <div class="organization-lists">
+        {% for org in organizations %}
+        <div class="organization">
+            <a href="/organization/{{org.organization_name}}/">
+                <img src="{{org.organization_logo}}" alt="{{org.organization_name}}" width="200"
+                height="100" 
+                onerror="this.onerror=null;this.src='https://talenttrackers.online/public/placeholder.png';"
+                />
+
+                <h3>{{org.organization_name}}</h3>
+                <!-- <div class="button">View Jobs</div> -->
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock body %}

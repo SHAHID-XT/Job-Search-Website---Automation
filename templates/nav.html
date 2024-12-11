@@ -1,0 +1,18 @@
+<nav class="parent-nav">
+    <div class="nav-headers">
+        <div class="nav-header-logo">
+            <a href="/">{{website_name}}</a>
+        </div>
+        <div class="nav-header-navigation">
+            <ul>
+                <li><a href="/job/">Jobs</a></li>
+                <li><a href="/organizations/">Organizations</a></li>
+                {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
+                {% comment %} <li><a href="/logout/">Logout</a></li>
+                {% else %}
+                <li><a href="/login/">Sign in</a></li>
+                {% endif %} {% endcomment %}
+            </ul>
+        </div>
+    </div>
+</nav>
